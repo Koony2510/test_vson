@@ -1,0 +1,17 @@
+name: Check Chrome Version
+
+on: [push]
+
+jobs:
+  check_chrome_version:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Print Chrome Version
+      run: |
+        echo "Current Chrome Version: $CHROME_VERSION"
+      env:
+        CHROME_VERSION: ${{ runner.tool_cache['chrome'] }}
