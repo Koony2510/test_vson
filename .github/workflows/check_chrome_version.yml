@@ -1,17 +1,13 @@
-name: Check Chrome Version
+name: Check ChromeDriver Version
 
 on: [push]
 
 jobs:
-  check_chrome_version:
+  check_chromedriver_version:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Print Chrome Version
+    - name: Setup ChromeDriver
       run: |
-        echo "Current Chrome Version: $CHROME_VERSION"
-      env:
-        CHROME_VERSION: ${{ runner.tool_cache['chrome'] }}
+        CHROMEDRIVER_VERSION=$(chromedriver --version)
+        echo "Current ChromeDriver Version: $CHROMEDRIVER_VERSION"
